@@ -44,14 +44,14 @@ editProfileButton.addEventListener('click', function() {
 });
 
 //Сохранение изменений редактирования профиля 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault(); //отмена стандартной отправки формы
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
   closeModal(popupEdit);
 };
 
-formEditProfile.addEventListener('submit', handleFormSubmit); //обработчик к форме, который следит за событием “submit”
+formEditProfile.addEventListener('submit', handleProfileFormSubmit); //обработчик к форме, который следит за событием “submit”
  
 //Закрытие попапа при клике на крестик
 closePopupButtons.forEach(function(button) {
