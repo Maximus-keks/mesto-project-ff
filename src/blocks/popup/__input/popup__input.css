@@ -7,11 +7,26 @@
   line-height: 18px;
   box-sizing: border-box;
   padding: 10px 0 0;
-  margin-bottom: 10px;
+  margin-block: 10px;
 }
 
-.popup__input:last-of-type {
-  margin-bottom: 0;
+.popup__input:first-of-type {
+  margin-top: 0;
+}
+
+.popup__input_type-error {
+  border-bottom: 1px solid rgb(255, 0, 0);
+}
+
+.popup__input-error {
+  font-size: 12px;
+  line-height: 100%;
+  color: rgb(255, 0, 0);
+  position: absolute;
+}
+
+.popup__error_visible {
+  display: block;
 }
 
 @media screen and (max-width: 568px) {

@@ -11,12 +11,19 @@
   border-radius: 2px;
   border: none;
   transition: visibility 0s, background 0.3s;
-  margin-top: 48px;
+  margin-top: 38px;
 }
 
 .popup__button:hover {
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
+}
+
+.popup__button_disabled,
+.popup__button_disabled:hover {
+  color: rgba(0, 0, 0, 0.2);
+  background: transparent;
+  border: 1px solid currentColor;
 }
 
 @media screen and (max-width: 568px) {
