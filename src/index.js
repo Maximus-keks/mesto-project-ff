@@ -64,13 +64,22 @@ profileImage.addEventListener('click', () => {
   openModal(popupAvatar);
 });
 
+// Утилитарная функция для изменения текста кнопки
+function renderLoading(isLoading, button, defaultText) {
+  if (isLoading) {
+    button.textContent = 'Сохранение...';
+  } else {
+    button.textContent = defaultText;
+  }
+};
+
 // Сохранение изменений редактирования фото профиля 
 function handleEditAvatarFormSubmit(evt) {
   evt.preventDefault(); //отмена стандартной отправки формы  
 
-  const submitButton = formEditAvatar.querySelector('.popup__button');
+  const submitButton = evt.submitter;
   const defaultText = submitButton.textContent;
-  submitButton.textContent = 'Сохранение...';
+  renderLoading(true, submitButton, defaultText);
 
   const avatarLink = avatarLinkInput.value
   updateUserAvatar(avatarLink)
@@ -83,7 +92,7 @@ function handleEditAvatarFormSubmit(evt) {
       console.log(err)
   })  
   .finally(() => {
-    submitButton.textContent = defaultText;
+    renderLoading(false, submitButton, defaultText);
   });
 };
 
@@ -101,9 +110,9 @@ editProfileButton.addEventListener('click', function() {
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); //отмена стандартной отправки формы
   
-  const submitButton = formEditProfile.querySelector('.popup__button');
+  const submitButton = evt.submitter;
   const defaultText = submitButton.textContent;
-  submitButton.textContent = 'Сохранение...';   
+  renderLoading(true, submitButton, defaultText);   
   
   const profileData = {
     name: nameInput.value,
@@ -120,7 +129,7 @@ function handleProfileFormSubmit(evt) {
       console.log(err)
   })  
   .finally(() => {
-    submitButton.textContent = defaultText;
+    renderLoading(false, submitButton, defaultText);
   });
 };
 
@@ -153,9 +162,9 @@ addCardButton.addEventListener('click', function() {
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault(); //отмена стандартной отправки формы
   
-  const submitButton = formAddCard.querySelector('.popup__button');
+  const submitButton = evt.submitter;
   const defaultText = submitButton.textContent;
-  submitButton.textContent = 'Сохранение...';   
+  renderLoading(true, submitButton, defaultText);   
     
   const newCard = { 
     name: cardNameInput.value, //получаем данные из формы
@@ -172,7 +181,7 @@ function handleAddCardFormSubmit(evt) {
     console.log(err)
   })  
   .finally(() => {
-    submitButton.textContent = defaultText;
+    renderLoading(false, submitButton, defaultText);
   });
 };
 
